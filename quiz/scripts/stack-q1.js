@@ -9,6 +9,9 @@ class PStack {
     return this.#id;
   }
 
+  getPersons() {
+    return this._persons;
+  }
 }
 
 class PStackImpl extends PStack {
@@ -17,17 +20,22 @@ class PStackImpl extends PStack {
   }
 
   push(p) {
-    return this._persons.push(p)
+    return this._persons.push(p);
   }
 
   pop() {
-    return this._persons.pop().age
+    if (this._persons.length === 0) {
+      return null;
+    }
+    return this._persons.pop().age;
   }
 }
 
 let pstack = new PStackImpl();
-pstack.persons = [{name: 'Jojo', age: 21}, {name: 'Gabi', age: 29}]
-pstack.push({name: 'Dein', age: 19});
+pstack.push({ name: 'Jojo', age: 21 });
+pstack.push({ name: 'Gabi', age: 29 });
+pstack.push({ name: 'Dein', age: 19 });
+
 console.log(pstack.pop());
 console.log(pstack.pop());
-console.log(pstack.persons);
+console.log(pstack.getPersons());
